@@ -1,0 +1,136 @@
+
+
+-----------------------------------------------------------
+Lab setup
+-------------
+
+1. Node.js runtime : https://nodejs.org/en/
+2. editor          : https://code.visualstudio.com/
+
+    1. vs-code icons
+    2. react-js code snippets
+
+-----------------------------------------------------------
+
+
+Ref : http://crockford.com/
+
+-----------------------------------------------------------
+
+.js-intro
+
+
+=> clinet-side language for web-pages in browser-envi(client-side)
++
+=> server-side language on Node.js(javascript runtime envi)
+=> Native Mobile Appln   
+
+-------------------------------------------------------------
+
+.js features
+
+
+=> dynamic data-types
+=> FP + OOP
+
+=> All IO operations are non-blocking by default
+=> single-threaded process, still we can execute concurrent actions due non-blocking IO
+
+-------------------------------------------------------------
+
+How to run .js-program ?
+
+==> using 'javascript-runtime'
+
+browser-envi
+
+1. chrome   ==> v8(c++)
+2. firefox  ==> rhino / spidermonkey ( java )
+3. IE/Edge  ==> chakra
+4. Safari   ==> Nitro
+....
+
+
+other-envi
+
+1. Node.js  ==> v8(c++)
+2. JVM      ==> rhino/nashorn
+3. Apache CouchDB
+4. Adobe
+...
+
+-------------------------------------------------------------
+
+.js-language based on 'ECMAScript spec'
+
+latest version : ES6
+
+
+-------------------------------------------------------------
+
+"Hello World"
+
+-------------------------------------------------------------
+
+dev web-server  ==> live-server script  ,
+                    runs on Node.js, it consider current  director project directory
+
+how to install ?
+
+> npm i live-server -g
+
+on project directory 
+
+> live-server --port=8080
+
+-------------------------------------------------------------
+
+
+
+
+JS-topics
+------------
+
+
+-------------------------------------------------
+ level-1:
+   1. data-types
+   2. scopes
+   3. Funtional & OO Programming
+-------------------------------------------------
+ level-2:
+   1. ES6 new-syntax
+   2. ES modules
+   3. New APIs 
+-------------------------------------------------
+level-3: 
+    1. concurrency model using event-loop
+    2. promise API
+    3. RxJS
+-------------------------------------------------
+level-4:
+    1. transpilers  e.g babel
+    2. module bundlers & loaders e.g webpack
+    3. NPM or Yarn
+-------------------------------------------------    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
