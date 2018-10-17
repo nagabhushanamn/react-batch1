@@ -96,11 +96,11 @@ JS-topics
  level-1:
    1. data-types
    2. scopes
-   3. Funtional & OO Programming
+   3. Functional & OO Programming
 -------------------------------------------------
  level-2:
    1. ES6 new-syntax
-   2. ES modules
+   2. JS module standards
    3. New APIs 
 -------------------------------------------------
 level-3: 
@@ -114,6 +114,7 @@ level-4:
     3. NPM or Yarn
 -------------------------------------------------    
       
+
 
 
 

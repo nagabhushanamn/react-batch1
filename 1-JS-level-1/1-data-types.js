@@ -6,7 +6,6 @@
         b.  string
         c.  number
         d.  boolean
-        
     2. complex / reference ==> objects
 */
 
@@ -30,7 +29,6 @@ var multiLineString = `
     line-1
     line-2
 `;
-
 
 //-----------------------------------------------------------------
 // c. number
@@ -56,8 +54,6 @@ var found = true;
 */
 
 
-
-
 //-----------------------------------------------------------------
 // 2. complex / reference ==> objects
 //-----------------------------------------------------------------
@@ -68,6 +64,7 @@ syntax:
 var ref = new Constructor()
 
 till ES5,
+    
     function ==> class/constructor
 
 in es6,

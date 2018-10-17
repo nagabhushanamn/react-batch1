@@ -249,36 +249,49 @@ e.g counter-module
 
 
 // // self executable / IIFE
-const counter = (function () {
-    let count = 0; // function scope  ==> private
-    // public
-    function doCount() {
-        count++;
-    }
-    function getCount() {
-        return count;
-    }
-    return {
-        inc: doCount,
-        get: getCount
-    }
-})()
+// const counter = (function () {
+//     let count = 0; // function scope  ==> private
+//     // public
+//     function doCount() {
+//         count++;
+//     }
+//     function getCount() {
+//         return count;
+//     }
+//     return {
+//         inc: doCount,
+//         get: getCount
+//     }
+// })()
 
-counter.inc();
-counter.inc();
+// counter.inc();
+// counter.inc();
 
 
 //---------------------------------------------------------
 
-
 // day-1 : Quiz
+// function getFood() {
+//     return{
+//         name: 'mini tiffin'
+//     }
+// }
+// let food = getFood();
+// console.log(food.name)
+
+//---------------------------------------------------------
+
+// day-2 : Quiz
 
 
-function getFood() {
-    return{
-        name: 'mini tiffin'
-    }
-}
+// "use strict"
 
-let food = getFood();
-console.log(food.name)
+
+// function func(){
+//      i=100; //  implicit global scoped..
+// }
+// func();
+
+// console.log(i);
+
+//---------------------------------------------------------

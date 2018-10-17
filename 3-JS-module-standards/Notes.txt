@@ -1,0 +1,22 @@
+
+
+
+-----------------------------------------------------------------
+
+.js-developement , without module-standards  & module-loaders
+
+
+ ==> global naming colilision
+ ==> loading dependency modules in-order is difficult
+
+ -----------------------------------------------------------------
+
+
+soln :  using module standards & loaders
+
+        module standards ==> commonJS | ES6 modules
+        loaders          ==> webpack
+
+----------------------------------------------------------------------        
+
+
