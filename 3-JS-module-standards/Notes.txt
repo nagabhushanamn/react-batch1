@@ -11,12 +11,78 @@
 
  -----------------------------------------------------------------
 
-
 soln :  using module standards & loaders
 
-        module standards ==> commonJS | ES6 modules
-        loaders          ==> webpack
 
-----------------------------------------------------------------------        
+from third-party
+  
 
+  1. AMD ( Async Module Definition )
+
+  2. UMD
+
+  3. commonJS
+
+-----------------------------------------------------------------
+
+commonJS module standard
+---------------------------
+
+rules
+-------
+
+        - every .js file is module by default
+        - all var/functions in .js file are private default
+        - to abstract/export any member to other, use 'module.exports' object
+        - to require/import any module, use 'require()' function
+        - we group related modules into package, with description file ( package.json )
+
+
+imp-note:
+
+ ==> Node.js runtime already implemented 'commonJS' as default module standard  , not browser
+ 
+------------------------------------------------------------------        
+
+
+NPM (  Node Package Manager )
+------------------------------
+
+
+   - cli tool
+   - part of Node.js runtime
+
+
+   why we need ?
+
+   => to publish/install javascript packages from NPM repository
+   => to manage application build-cycle
+
+
+---------------------------------------------------------------------
+
+
+From ECMAScript spec ( in es6 ),   
+
+
+  ES module standard
+
+
+  rules
+  -------
+
+          - every .js file is module by default
+          - all var/functions in .js file are private default
+          - to abstract/export any member to other, use 'export' keyword
+          - to require/import any module, use 'import' keyword
+          - we group related modules into package, with description file ( package.json )
+
+
+
+Note :  neither Node.js nor browser supports this module standard
+
+---------------------------------------------------------------------
+        
+
+      
 
