@@ -2,6 +2,9 @@ console.log('-index.js-');
 
 import 'bootstrap/dist/css/bootstrap.css';
 
+import {} from './sample-scripts';
+import {} from './Promise API';
+
 
 //--------------------------------------------------------
 // using XHR/Fetch API

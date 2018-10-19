@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body class="container">
+
+    <hr />
+    <h1>componenent archtecture</h1>
+    <hr />
+
+
+    <div id="box1" class="alert alert-danger">
+        <input id="inp1" type="number" onchange="handleChangeByDiv()" />
+        <hr />
+        <span class="badge badge-primary">0</span>
+    </div>
+
+    <script>
+        let inp1 = document.getElementById('inp1');
+
+        let count = 0;
+        setInterval(() => {
+            count++;
+            inp1.value = count;
+            inp1.dispatchEvent(new Event('change'))// 
+        }, 1000)
+
+        function handleChangeByDiv() {
+            document.querySelector('.badge').innerHTML = count
+        }
+    </script>
+
+
+</body>
+
+</html>

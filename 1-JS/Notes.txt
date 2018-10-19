@@ -105,7 +105,7 @@ JS-topics
 -------------------------------------------------
 level-3: 
     1. concurrency model using event-loop
-    2. promise API
+    2. Promise API
     3. RxJS
 -------------------------------------------------
 level-4:
@@ -114,6 +114,20 @@ level-4:
     3. NPM or Yarn
 -------------------------------------------------    
       
+
+
+
+References :
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript
+    http://exploringjs.com/
+    http://javascript.info/
+    http://reactivex.io/     |  https://rxjs-dev.firebaseapp.com/
+
+----------------------------------------------------    
+
+
+
 
 
 

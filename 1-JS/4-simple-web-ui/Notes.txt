@@ -122,6 +122,43 @@ best-soln:
 
 
 
+    .js is
+
+
+    => All IO operations are non-blocking by default
+    => single-threaded process,
+      still we can execute concurrent actions due to non-blocking IO
+
+
+    ------------------------------------------------------
+
+
+    browser  e.g chrome 
+
+
+    1. Javascript runtime/engine    ==> ECMAScript spec
+
+        a. call-stack  --> to execute function-scopes
+        b. heap        --> to hold objects
+
+    2. web-APIs ( DOM, XHR, Timer , HTML5 )   ==> w3c spec
+
+    3. Event/callback/message Queue
+
+    4. Event-Loop
+
+    --------------------------------------------------------
+
+    
+
+
+
+
+
+
+
+
+
 
 
 
