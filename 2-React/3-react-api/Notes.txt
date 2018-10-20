@@ -1,0 +1,24 @@
+
+
+----------------------------------------------------------------------
+props & state
+----------------------------------------------------------------------
+
+component's
+
+    - props  ==> immutable data which comes from parane-component
+    - state  ==> mutable-data owns by component itself
+
+    imp-notes : when state changes, component  
+               & its childrens always re-render to virtual DOM
+
+--------------------------------------------------------------------- 
+component's life-cycle
+--------------------------------------------------------------------- 
+
+
+Ref : https://reactjs.org/docs/react-component.html
+
+
+
+

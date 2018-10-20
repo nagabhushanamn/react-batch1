@@ -98,7 +98,3 @@ somtimes we need components like these
 ---------------------------------------------------------------------------  
 
 
-
-REACT   ==> View components
-Redux   ==> state management Library
-
