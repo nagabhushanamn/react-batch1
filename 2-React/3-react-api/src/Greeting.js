@@ -10,7 +10,7 @@ class Greeting extends Component {
 
     componentDidMount() {
         this.interaval = setInterval(() => {
-            this.forceUpdate();
+            //this.forceUpdate();
         }, 100);
     }
 

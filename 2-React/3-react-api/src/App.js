@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Greeting from './Greeting';
+import CounterApp from './CounterApp';
+import Box from './Box';
+import Product from './Product';
+import Employee from './Employee';
 
 class App extends Component {
 
@@ -31,9 +35,22 @@ class App extends Component {
     let { message } = this.state;
     return (
       <div className="container">
-
         <hr />
         <h1> {title}  : by {by}  </h1>
+        <hr />
+        <Box>
+          <Product />
+          <Product />
+          <Product />
+          <Product /><Product /><Product />
+        </Box>
+        <Box>
+          <Employee />
+          <Employee />
+          <Employee />
+        </Box>
+        <hr />
+        <CounterApp />
         <hr />
         <button className="btn btn-dark" onClick={this.changeGreeting.bind(this, 'good morning')}>GM</button>
         <button className="btn btn-dark" onClick={e => this.changeGreeting('good noon')}>GN</button>

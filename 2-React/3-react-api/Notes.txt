@@ -19,6 +19,23 @@ component's life-cycle
 
 Ref : https://reactjs.org/docs/react-component.html
 
+--------------------------------------------------------------------- 
+
+e.g counter appln to understand props & state
+
+   ------------- 
+   |+10 ==> 4  |  
+   -------------
+
+--------------------------------------------------------------------- 
 
 
+==> container components
 
+    why we need ?
+
+    --> layout/styling for many childrens
+    --> holds common business/ui logic
+
+
+------------------------------------------------------    
