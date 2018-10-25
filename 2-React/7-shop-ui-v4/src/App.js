@@ -20,26 +20,18 @@ class App extends Component {
     super(props);
     this.state = {
       cart: [],
-      products: [
-        {
-          id: 111,
-          name: 'Laptop',
-          price: 198000,
-          description: 'New mac pro',
-          canBuy: true,
-          image: 'images/Laptop.png'
-        },
-        {
-          id: 222,
-          name: 'Mobile',
-          price: 18000,
-          description: 'New pro',
-          canBuy: true,
-          image: 'images/Mobile.png'
-        }
-      ]
+      products: []
     }
   }
+
+  componentDidMount() {
+    let api = "http://0.0.0.0:8080/api/products";
+    // using XHR/fetch API
+    fetch(api)
+      .then(response => response.json())
+      .then(products => this.setState({ products }))
+  }
+
   addToCart(item, qty) {
     let { cart } = this.state;
     cart = cart.concat(item)
