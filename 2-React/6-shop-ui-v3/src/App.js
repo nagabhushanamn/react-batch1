@@ -3,6 +3,8 @@ import NavBar from './components/NavBar';
 import Product from './components/Product';
 import Viewcart from './components/ViewCart';
 
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -58,16 +60,20 @@ class App extends Component {
     let { cart, isCartOpen } = this.state;
     return (
       <div className="container">
-        <NavBar title="online-shopping" />
-        <hr />
-        <i className="fa fa-shopping-cart"></i> &nbsp;
-        <span className="badge badge-primary">{cart.length}</span> item(s) in cart
-        &nbsp;
-        |
-        &nbsp;
-        <a href="/" onClick={e => this.toggleCart(e)}>{isCartOpen ? 'View products' : "View cart"}</a>
-        <hr />
-        {this.renderProducts()}
+        <Router>
+          <div>
+            <NavBar title="online-shopping" />
+            <hr />
+            <i className="fa fa-shopping-cart"></i> &nbsp;
+            <span className="badge badge-primary">{cart.length}</span> item(s) in cart
+            &nbsp;
+            |
+            &nbsp;
+            <a href="/" onClick={e => this.toggleCart(e)}>{isCartOpen ? 'View products' : "View cart"}</a>
+            <hr />
+            {this.renderProducts()}
+          </div>
+        </Router>
       </div>
     );
   }
