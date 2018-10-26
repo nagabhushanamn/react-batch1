@@ -45,7 +45,7 @@ class App extends Component {
         <Product value={p} onBuy={item => this.addToCart(item)} key={idx} />
       )
     })
-  }
+  } 
   render() {
     let { cart } = this.state;
     return (

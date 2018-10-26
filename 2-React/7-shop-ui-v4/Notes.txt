@@ -1,0 +1,54 @@
+
+
+
+
+problems in current application?
+
+
+==> view/rendering-logic + state & state-logic are coupled ,together
+
+
+        -> cannot re-use same state in multiple components
+        -> UI component testing very difficult
+
+
+
+soln:
+
+        using MVC design pattern
+
+        M ==> model/state
+        V ==> View
+        C ==> Controller
+
+        Limitation:
+
+            => its always use 2-way data-binding
+
+
+            M1   -     V1
+
+            M2   /     V2 
+                 \
+            M3  /      V3
+           
+           probs : 
+           
+             ==> debugging UI application data-flow is always difficult
+             ==> very difficult to introduce/revoew  models & views
+             ==> can't develope UI components with single responsibility
+             
+
+
+
+   best-soln :
+
+            => use 'flux' design pattern from facebook, with uni-directional flow 
+
+            
+
+
+            
+        
+
+          
