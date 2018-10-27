@@ -1,8 +1,10 @@
 console.log('-inde.js-');
 
 import 'bootstrap/dist/css/bootstrap.css'
-import { combineReducers, createStore } from 'redux'
-import { Map } from 'immutable'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 
 //------------------------------------------------------
 // state/model
@@ -20,7 +22,8 @@ import { Map } from 'immutable'
 //------------------------------------------------------
 
 const LOAD_PRODUCTS_SUCCESS = "LOAD_PRODUCTS_SUCCESS"
-const LOAD_REVIEWS_SUCCESS = "LOAD_REVIEWS";
+const LOAD_REVIEWS_SUCCESS = "LOAD_REVIEWS_SUCCESS";
+const LOAD_REVIEWS_FAILED = "LOAD_REVIEWS_FAILED";
 const SUBMIT_NEW_REVIEW = "SUBMIT_NEW_REVIEW"
 const BUY = "BUY"
 const CHECKOUT = "CHECKOUT"
@@ -30,22 +33,45 @@ const CHECKOUT = "CHECKOUT"
 //------------------------------------------------------
 function loadProducts(size) {
 
-    let products = [
-        { id: 111, name: 'Laptop', price: 19800, description: 'New Mac pro' },
-        { id: 222, name: 'Mobile', price: 1800, description: 'New  pro' }
-    ];
+    // let products = [
+    //     { id: 111, name: 'Laptop', price: 19800, description: 'New Mac pro' },
+    //     { id: 222, name: 'Mobile', price: 1800, description: 'New  pro' }
+    // ];
 
-    return { type: LOAD_PRODUCTS_SUCCESS, products } // sync action
+    // return {type:LOAD_PRODUCTS_SUCCESS,products}  // sync action
+
+    //
+    // api-call
+    // return thunk
+    return function (dispatch) {
+        let api = "http://localhost:8080/api/products";
+        fetch(api)
+            .then(response => response.json())
+            .then(products => {
+                setTimeout(() => {
+                    dispatch({ type: LOAD_PRODUCTS_SUCCESS, products })
+                }, 3000)
+            })
+    }
 
 }
 
 function loadReviews(productId) {
-    // api call
-    let reviews = [
-        { stars: 5, author: 'who@email.com', body: 'sample review-1' },
-        { stars: 1, author: 'who@email.com', body: 'sample review-2' }
-    ];
-    return { type: LOAD_REVIEWS_SUCCESS, reviews, productId }
+    // let reviews = [
+    //     { stars: 5, author: 'who@email.com', body: 'sample review-1' },
+    //     { stars: 1, author: 'who@email.com', body: 'sample review-2' }
+    // ];
+    // return { type: LOAD_REVIEWS_SUCCESS, reviews, productId }
+
+    return function (dispatch) {
+        let api = `http://localhost:8080/api/products/${productId}/reviews`;
+        fetch(api)
+            .then(response => response.json())
+            .then(reviews => {
+                dispatch({ type: LOAD_REVIEWS_SUCCESS, reviews, productId })
+            })
+    }
+
 }
 
 function buy(item, qty) {
@@ -55,7 +81,16 @@ function buy(item, qty) {
 
 function submitNewReview(newReview, productId) {
     //
-    return { type: SUBMIT_NEW_REVIEW, newReview, productId }
+    //return { type: SUBMIT_NEW_REVIEW, newReview, productId }
+
+    return function (dispatch) {
+        let api = `http://localhost:8080/api/products/${productId}/reviews`;
+        fetch(api, { method: 'POST', headers: { 'Content-Type': 'application/json', body: JSON.stringify(newReview) } })
+            .then(response => response.json())
+            .then(review => {
+                dispatch({ type: SUBMIT_NEW_REVIEW, newReview: review, productId })
+            })
+    }
 }
 
 //------------------------------------------------------
@@ -78,6 +113,9 @@ function reviewsReducer(state = {}, action) {
             let { productId, reviews } = action;
             let newReviews = [...existingReviews, ...reviews]
             return Object.assign({}, state, { [productId]: newReviews })
+        }
+        case LOAD_REVIEWS_FAILED: {
+            return state;
         }
         case SUBMIT_NEW_REVIEW: {
             let { newReview } = action;
@@ -118,8 +156,17 @@ const preLoadedState = {
     cart: []
 };
 
-const store = createStore(rootreducer, preLoadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// const store = createStore(rootreducer, preLoadedState, applyMiddleware(ReduxThunk));
+// or
+// 
 
+const middleware = [ReduxThunk]
+const composeEnhancers = composeWithDevTools({
+    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
+const store = createStore(rootreducer, preLoadedState, composeEnhancers(
+    applyMiddleware(...middleware),
+));
 
 //------------------------------------------------------
 
