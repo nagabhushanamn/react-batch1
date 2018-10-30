@@ -20,6 +20,9 @@
  11. arrow-function
 
 
+ 12. generator function
+
+
 */
 
 

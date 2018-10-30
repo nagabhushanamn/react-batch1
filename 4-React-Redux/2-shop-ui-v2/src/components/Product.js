@@ -8,47 +8,42 @@ import ReviewForm from './ReviewForm';
 import { loadReviews, submitNewReview } from '../actions/reviews';
 import { buy } from '../actions/cart'
 
-import store from '../store';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 class Product extends Component {
     constructor(props) {
         super(props)
         this.state = {
             tab: 1,
-            reviews: []
         }
-    }
-    componentDidMount() {
-        let product = this.props.value;
-        store.subscribe(() => {
-            console.log('Product component : subscribing reviews');
-            let reviews = store.getState().reviews[product.id] || [];
-            this.setState({ reviews })
-        })
     }
     addNewReview(review) {
         let product = this.props.value;
-        store.dispatch(submitNewReview(review, product.id))
+        let { actions } = this.props;
+        actions.submitNewReview(review, product.id);
     }
     changeTab(idx, e) {
         e.preventDefault();
         this.setState({ tab: idx }, () => {
             if (idx === 3) {
                 let product = this.props.value;
-                store.dispatch(loadReviews(product.id));
+                let { actions } = this.props;
+                actions.loadReviews(product.id)
             }
         });
     }
     handleBuy() {
         let item = this.props.value;
-        store.dispatch(buy(item))
+        let { actions } = this.props;
+        actions.buy(item)
     }
     renderBuyBtn(product) {
         if (product.canBuy) return (<button onClick={e => this.handleBuy()} className="btn btn-sm btn-primary">buy</button>)
         else return null
     }
     renderReviews() {
-        let { reviews } = this.state;
+        let { reviews } = this.props;
         return reviews.map((rev, idx) => {
             return <Review review={rev} key={idx} />
         })
@@ -109,4 +104,18 @@ Product.propTypes = {
     value: PropTypes.object
 }
 
-export default Product;
+
+function mapStateToProps(state, props) {
+    let product = props.value
+    return {
+        reviews: state.reviews[product.id] || []
+    }
+}
+function mapDispatchToProps(dispatch) {
+    let actions = { loadReviews, submitNewReview, buy }
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

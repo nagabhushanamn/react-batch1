@@ -5,6 +5,8 @@ import CounterApp from './CounterApp';
 import Box from './Box';
 import Product from './Product';
 import Employee from './Employee';
+import A from './A';
+import B from './B';
 
 class App extends Component {
 
@@ -38,6 +40,11 @@ class App extends Component {
         <hr />
         <h1> {title}  : by {by}  </h1>
         <hr />
+
+        <A value={1000.00} />
+
+        <B />
+
         <Box>
           <Product />
           <Product />

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar';
-import Product from './components/Product';
-import Viewcart from './components/ViewCart';
+import ViewCart from './components/ViewCart';
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from './components/Home';
 
-import { loadProducts } from './actions/products';
-import store from './store'
+
+import { connect } from 'react-redux'
+import CartBadge from './components/CartBadge';
+import ProductList from './components/ProductList';
 
 
 const NoMatch = ({ location }) => (
@@ -19,44 +20,15 @@ const NoMatch = ({ location }) => (
 );
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cart: [],
-      products: []
-    }
-  }
- 
-  componentDidMount() {
 
-    store.subscribe(() => {
-      console.log('App component : subscribing products');
-      let products = store.getState().products;
-      let cart = store.getState().cart;
-      this.setState({ products, cart })
-    });
-
-    store.dispatch(loadProducts())
-  }
-
-  renderProducts() {
-    let { products } = this.state;
-    return products.map((p, idx) => {
-      return (
-        <Product value={p} key={idx} />
-      )
-    })
-  }
   render() {
-    let { cart } = this.state;
     return (
       <div className="container" >
         <Router>
           <div>
             <NavBar title="online-shopping" />
             <hr />
-            <i className="fa fa-shopping-cart"></i> &nbsp;
-            <span className="badge badge-primary">{cart.length}</span> item(s) in cart
+            <CartBadge />
             <hr />
             <ul className="nav nav-pills">
               <li className="nav-item">
@@ -67,11 +39,13 @@ class App extends Component {
               </li>
             </ul>
             <hr />
-
+            <div className="alert alert-info">
+              {this.props.status.message}
+            </div>
             <Switch>
               <Route path={"/"} exact={true} component={Home} />
-              <Route path={"/products"} render={() => this.renderProducts()} />
-              <Route path={"/cart"} render={() => <Viewcart cart={cart} />} />
+              <Route path={"/products"} component={ProductList} />
+              <Route path={"/cart"} render={() => <ViewCart />} />
               <Route exact={true} component={NoMatch} />
             </Switch>
 
@@ -82,4 +56,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    status: state.status
+  }
+}
+
+export default connect(mapStateToProps, null)(App);
